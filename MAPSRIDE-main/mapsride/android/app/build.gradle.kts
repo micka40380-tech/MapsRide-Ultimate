@@ -5,18 +5,16 @@ plugins {
 
 android {
     namespace = "com.example.mon_app"
-    compileSdk = 34
+    compileSdk = 36 // Mis à jour à 36 pour satisfaire la dépendance
 
-    // Ajoute ceci pour satisfaire le nouveau DSL
     androidComponents {
         onVariants(selector().all()) {
-            // Configuration spécifique si nécessaire
         }
     }
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 36 // Mis à jour à 36 pour la cohérence
     }
 }
 
