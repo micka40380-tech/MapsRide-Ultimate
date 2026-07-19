@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace = "com.example.mon_app"
-    compileSdk = 36
+    // On redescend à 34 : c'est le compromis parfait pour la compatibilité
+    compileSdk = 34
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -21,14 +22,8 @@ android {
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 36
-    }
-}
-
-// C'EST CETTE SECTION QUI VA DÉBLOQUER LE BUILD
-configurations.all {
-    resolutionStrategy {
-        force("androidx.exifinterface:exifinterface:1.3.7")
+        // targetSdk à 34 est la norme actuelle stable
+        targetSdk = 34
     }
 }
 
