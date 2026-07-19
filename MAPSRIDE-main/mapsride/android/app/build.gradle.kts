@@ -25,9 +25,11 @@ android {
     }
 }
 
-// FORCE LA MISE À JOUR DES DÉPENDANCES CONFLIGÉES
-dependencies {
-    implementation("androidx.exifinterface:exifinterface:1.3.7")
+// C'EST CETTE SECTION QUI VA DÉBLOQUER LE BUILD
+configurations.all {
+    resolutionStrategy {
+        force("androidx.exifinterface:exifinterface:1.3.7")
+    }
 }
 
 flutter {
