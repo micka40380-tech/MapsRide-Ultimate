@@ -1,0 +1,19 @@
+{
+  "builds": [
+    {
+      "src": "pubspec.yaml",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build/web"
+      }
+    }
+  ],
+  "installCommand": "curl -fsSL https://raw.githubusercontent.com/flutter/flutter/stable/bin/flutter > flutter_setup.sh && bash flutter_setup.sh && export PATH=\"$PATH:`pwd`/flutter/bin\" && flutter pub get",
+  "buildCommand": "export PATH=\"$PATH:`pwd`/flutter/bin\" && flutter build web --release",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ]
+}
