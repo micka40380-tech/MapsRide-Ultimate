@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Permissions ajoutées pour le talkie-walkie et l'activité en arrière-plan -->
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -8,10 +8,19 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!-- Le bloc queries doit être ici, au même niveau que <application> -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+
     <application
-        android:label="mon_app"
+        android:label="@string/app_name"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,17 +39,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AizaSyCvSvnHyAgU0bZrvlLWYQ6HRwbHBNb1X80" />
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <queries>
-            <intent>
-                <action android:name="android.intent.action.PROCESS_TEXT"/>
-                <data android:mimeType="text/plain"/>
-            </intent>
-        </queries>
     </application>
 </manifest>
