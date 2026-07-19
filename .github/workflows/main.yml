@@ -22,7 +22,7 @@ jobs:
         run: |
           flutter clean
           flutter pub get
-          # On ajoute une directive pour ignorer certaines erreurs de Gradle liées au plugin ads
+          flutter pub upgrade
           flutter build apk --release --build-name=1.0.0 --build-number=1
         working-directory: MAPSRIDE-main/mapsride
         env:
