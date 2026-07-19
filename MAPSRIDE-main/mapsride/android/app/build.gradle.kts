@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("dev.flutter.flutter-gradle-plugin")
-    id("org.jetbrains.kotlin.android") // Ajout nécessaire pour le nouveau DSL
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -13,7 +13,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    // Voici la nouvelle syntaxe moderne que Gradle réclame :
     kotlin {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
@@ -23,6 +22,17 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 36
+    }
+}
+
+// AJOUTE CE BLOC POUR FORCER LA COMPATIBILITÉ
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "androidx.core" || requested.name.contains("geocoding")) {
+                useTarget("${requested.group}:${requested.name}:1.13.1") // Force une version compatible
+            }
+        }
     }
 }
 
