@@ -25,17 +25,6 @@ android {
     }
 }
 
-// AJOUTE CE BLOC POUR FORCER LA COMPATIBILITÉ
-configurations.all {
-    resolutionStrategy {
-        eachDependency {
-            if (requested.group == "androidx.core" || requested.name.contains("geocoding")) {
-                useTarget("${requested.group}:${requested.name}:1.13.1") // Force une version compatible
-            }
-        }
-    }
-}
-
 flutter {
     source = "../.."
 }
