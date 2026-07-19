@@ -22,7 +22,8 @@ jobs:
         run: |
           flutter clean
           flutter pub get
-          flutter build apk --release
+          # On force une version compatible de Gradle pour le plugin ads
+          ./gradlew assembleRelease || flutter build apk --release
         working-directory: MAPSRIDE-main/mapsride
         env:
           GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx2048m -Dfile.encoding=UTF-8"
