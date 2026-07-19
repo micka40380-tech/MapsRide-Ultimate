@@ -25,6 +25,11 @@ android {
     }
 }
 
+// FORCE LA MISE À JOUR DES DÉPENDANCES CONFLIGÉES
+dependencies {
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
+}
+
 flutter {
     source = "../.."
 }
