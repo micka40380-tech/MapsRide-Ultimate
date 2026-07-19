@@ -6,7 +6,6 @@ plugins {
 
 android {
     namespace = "com.example.mon_app"
-    // On redescend à 34 : c'est le compromis parfait pour la compatibilité
     compileSdk = 34
 
     compileOptions {
@@ -22,8 +21,14 @@ android {
 
     defaultConfig {
         minSdk = 21
-        // targetSdk à 34 est la norme actuelle stable
         targetSdk = 34
+    }
+}
+
+// ON FORCE UNE VERSION DE CORE COMPATIBLE AVEC LE SDK 34
+configurations.all {
+    resolutionStrategy {
+        force("androidx.core:core:1.13.1")
     }
 }
 
