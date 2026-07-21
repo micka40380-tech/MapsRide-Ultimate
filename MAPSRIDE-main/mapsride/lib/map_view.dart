@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
 import 'database_helper.dart';
 
 class MapView extends StatefulWidget {
@@ -42,10 +41,10 @@ class _MapViewState extends State<MapView> {
     final commerces = await db.query('commerces');
     setState(() {
       _markers = commerces.map((c) => Marker(
-            markerId: MarkerId(c['id'].toString()),
-            position: LatLng(c['latitude'] as double, c['longitude'] as double),
-            infoWindow: InfoWindow(title: c['nom_lieu'] as String),
-          )).toSet();
+        markerId: MarkerId(c['id'].toString()),
+        position: LatLng(c['latitude'] as double, c['longitude'] as double),
+        infoWindow: InfoWindow(title: c['nom_lieu'] as String),
+      )).toSet();
     });
   }
 
@@ -80,7 +79,7 @@ class _MapViewState extends State<MapView> {
             initialCameraPosition: const CameraPosition(target: LatLng(47.190, 2.450), zoom: 15),
             markers: _markers,
           ),
-          
+
           // HUD HAUT
           Positioned(
             top: 40, left: 20, right: 20,
@@ -88,7 +87,7 @@ class _MapViewState extends State<MapView> {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(10)),
               child: Column(children: [
-                Text("Niveau: $_niveau | 🪙 $_monArgent €", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                Text("Niveau: $_niveau | 💰 $_monArgent €", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                 LinearProgressIndicator(value: _xp / 100, backgroundColor: Colors.white24),
               ]),
             ),
@@ -98,7 +97,7 @@ class _MapViewState extends State<MapView> {
           Positioned(
             bottom: 0, left: 0, right: 0,
             child: Container(
-              height: 280,
+              height: 200,
               decoration: const BoxDecoration(color: Colors.black, borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
               child: Column(
                 children: [
@@ -108,7 +107,7 @@ class _MapViewState extends State<MapView> {
                       children: [
                         // Image du guidon
                         Image.asset('assets/images/urban_glide.jpg', fit: BoxFit.contain),
-                        
+
                         // Compteur superposé
                         Positioned(
                           top: 140, // Ajuste cette valeur si le texte n'est pas pile sur l'écran
@@ -125,7 +124,7 @@ class _MapViewState extends State<MapView> {
                       ],
                     ),
                   ),
-                  
+
                   // Boutons d'action
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
