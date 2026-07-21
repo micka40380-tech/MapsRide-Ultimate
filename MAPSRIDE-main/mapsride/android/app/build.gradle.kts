@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.micka40380.mapsride"
-    compileSdk = 34
+    compileSdk = 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -22,9 +22,17 @@ android {
     defaultConfig {
         applicationId = "com.micka40380.mapsride"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
+    }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "androidx.core" && requested.name == "core-ktx") {
+            useVersion("1.13.1")
+        }
     }
 }
 
