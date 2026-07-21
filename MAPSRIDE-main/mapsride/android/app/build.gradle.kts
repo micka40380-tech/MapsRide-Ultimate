@@ -29,7 +29,3 @@ android {
         source = "../.."
     }
 }
-
-tasks.matching { it.name == "generateLockfiles" }.all {
-    enabled = false
-}
