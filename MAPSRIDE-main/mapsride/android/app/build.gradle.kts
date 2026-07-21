@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.micka40380.mapsride"
-    compileSdk = 36
+    compileSdk = 34
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -22,17 +22,9 @@ android {
     defaultConfig {
         applicationId = "com.micka40380.mapsride"
         minSdk = 21
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
-    }
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency {
-        if (requested.group == "androidx.exifinterface" && requested.name == "exifinterface") {
-            useVersion("1.3.7")
-        }
     }
 }
 
