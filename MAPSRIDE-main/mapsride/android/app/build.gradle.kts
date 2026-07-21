@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("dev.flutter.flutter-gradle-plugin")
-    id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -13,20 +12,15 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-        }
-    }
-
     defaultConfig {
+        applicationId = "com.micka40380.mapsride"
         minSdk = 21
         targetSdk = 36
-        versionCode = flutterVersionCode.toInt()
+        versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
+}
 
-    flutter {
-        source = "../.."
-    }
+flutter {
+    source = "../.."
 }
