@@ -3,6 +3,10 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+tasks.matching { it.name == "generateLockfiles" }.all {
+    enabled = false
+}
+
 android {
     namespace = "com.micka40380.mapsride"
     compileSdk = 36
@@ -23,8 +27,4 @@ android {
 
 flutter {
     source = "../.."
-}
-
-tasks.matching { it.name == "generateLockfiles" }.all {
-    enabled = false
 }
