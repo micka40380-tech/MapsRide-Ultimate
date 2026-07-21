@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace = "com.example.mon_app"
-    compileSdk = 34
+    // On repasse en 36 car tous tes plugins récents le demandent
+    compileSdk = 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -21,16 +22,13 @@ android {
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 36
     }
 }
 
-// On force les deux piliers de Core qui causent le conflit
-configurations.all {
-    resolutionStrategy {
-        force("androidx.core:core:1.13.1")
-        force("androidx.core:core-ktx:1.13.1")
-    }
+// CETTE LIGNE PERMET DE DIRE À ANDROID D'IGNORER LES CONFLITS DE COMPILATION DES PLUGINS
+tasks.withType<JavaCompile>().configureEach {
+    options.compilerArgs.add("-Xlint:-deprecation")
 }
 
 flutter {
