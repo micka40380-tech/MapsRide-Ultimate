@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
@@ -19,12 +18,4 @@ android {
         versionCode = 1
         versionName = "1.0.0"
     }
-}
-
-flutter {
-    source = "../.."
-}
-
-afterEvaluate {
-    tasks.findByName("generateLockfiles")?.enabled = false
 }
