@@ -16,11 +16,15 @@ android {
         applicationId = "com.micka40380.mapsride"
         minSdk = 21
         targetSdk = 36
-        versionCode = flutterVersionCode.toInteger()
-        versionName = flutterVersionName
+        versionCode = 1
+        versionName = "1.0.0"
     }
 }
 
 flutter {
     source = "../.."
+}
+
+tasks.matching { it.name == "generateLockfiles" }.all {
+    enabled = false
 }
