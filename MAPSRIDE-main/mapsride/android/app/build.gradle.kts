@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mon_app"
+    namespace = "com.micka40380.mapsride"
     compileSdk = 36
 
     compileOptions {
@@ -22,6 +22,8 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 36
+        versionCode = flutterVersionCode.toInt()
+        versionName = flutterVersionName
     }
 
     flutter {
