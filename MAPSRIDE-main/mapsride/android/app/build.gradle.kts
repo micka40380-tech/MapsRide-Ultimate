@@ -23,8 +23,8 @@ android {
         minSdk = 21
         targetSdk = 36
     }
-}
 
-flutter {
-    source = "../.."
+    flutter {
+        source = "../.."
+    }
 }
