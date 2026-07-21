@@ -28,12 +28,6 @@ android {
     }
 }
 
-androidComponents {
-    onVariants(selector().all()) { variant ->
-        variant.maxSdk = null
-    }
-}
-
 flutter {
     source = "../.."
 }
