@@ -6,7 +6,6 @@ plugins {
 
 android {
     namespace = "com.example.mon_app"
-    // On repasse en 36 car tous tes plugins récents le demandent
     compileSdk = 36
 
     compileOptions {
@@ -24,11 +23,6 @@ android {
         minSdk = 21
         targetSdk = 36
     }
-}
-
-// CETTE LIGNE PERMET DE DIRE À ANDROID D'IGNORER LES CONFLITS DE COMPILATION DES PLUGINS
-tasks.withType<JavaCompile>().configureEach {
-    options.compilerArgs.add("-Xlint:-deprecation")
 }
 
 flutter {
