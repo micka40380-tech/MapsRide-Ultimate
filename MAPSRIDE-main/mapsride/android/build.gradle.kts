@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -12,6 +13,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     defaultConfig {
         applicationId = "com.micka40380.mapsride"
         minSdk = 21
@@ -19,12 +24,8 @@ android {
         versionCode = 1
         versionName = "1.0.0"
     }
-}
 
-flutter {
-    source = "../.."
-}
-
-tasks.matching { it.name == "generateLockfiles" }.all {
-    enabled = false
+    flutter {
+        source = "../.."
+    }
 }
