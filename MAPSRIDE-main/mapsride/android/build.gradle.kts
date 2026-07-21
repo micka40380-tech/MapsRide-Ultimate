@@ -21,10 +21,10 @@ android {
     }
 }
 
-tasks.matching { it.name == "generateLockfiles" }.all {
-    enabled = false
-}
-
 flutter {
     source = "../.."
+}
+
+tasks.matching { it.name == "generateLockfiles" }.all {
+    enabled = false
 }
