@@ -28,6 +28,14 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "androidx.exifinterface" && requested.name == "exifinterface") {
+            useVersion("1.3.7")
+        }
+    }
+}
+
 flutter {
     source = "../.."
 }
