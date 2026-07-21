@@ -25,10 +25,11 @@ android {
     }
 }
 
-// ON FORCE UNE VERSION DE CORE COMPATIBLE AVEC LE SDK 34
+// On force les deux piliers de Core qui causent le conflit
 configurations.all {
     resolutionStrategy {
         force("androidx.core:core:1.13.1")
+        force("androidx.core:core-ktx:1.13.1")
     }
 }
 
