@@ -15,11 +15,20 @@ rootProject.layout.buildDirectory.value(newBuildDir)
 subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
-    
-    // Force spécifiquement les plugins Android des sous-modules à utiliser compileSdk 36
-    plugins.withId("com.android.library") {
-        extensions.configure<com.android.build.gradle.LibraryExtension> {
-            compileSdk = 36
+
+    // Solution radicale : force n'importe quel module Android (app ou bibliothèque) à basculer en SDK 36
+    afterEvaluate {
+        val extension = project.extensions.findByName("android")
+        if (extension != null) {
+            try {
+                val method = extension.javaClass.getMethod("setCompileSdkVersion", Int::class.java)
+                method.invoke(extension, 36)
+            } catch (e: Exception) {
+                try {
+                    val method = extension.javaClass.getMethod("compileSdk", Int::class.java)
+                    method.invoke(extension, 36)
+                } catch (ignored: Exception) {}
+            }
         }
     }
 }
