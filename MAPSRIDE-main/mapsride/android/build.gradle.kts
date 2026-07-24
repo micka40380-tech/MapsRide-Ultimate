@@ -18,11 +18,19 @@ subprojects {
 }
 
 subprojects {
-    afterEvaluate {
+    fun forceSdk36() {
         if (plugins.hasPlugin("com.android.application") || plugins.hasPlugin("com.android.library")) {
             configure<com.android.build.gradle.BaseExtension> {
                 compileSdkVersion(36)
             }
+        }
+    }
+
+    if (state.executed) {
+        forceSdk36()
+    } else {
+        afterEvaluate {
+            forceSdk36()
         }
     }
 }
