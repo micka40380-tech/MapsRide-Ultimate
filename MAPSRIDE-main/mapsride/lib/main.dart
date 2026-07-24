@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'database_helper.dart';
-import 'main_navigation.dart'; // Importation de la navigation
+import 'main_navigation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   try {
     // Initialisation de la DB dès le lancement avec capture d'erreur
     await DatabaseHelper.instance.database;
     runApp(const MyApp());
   } catch (e, stackTrace) {
-    // Si la base de données ou le démarrage plante, l'app l'affiche direct en rouge sur le téléphone !
+    // Affiche l'erreur exacte et sa trace en rouge vif sur le téléphone en cas de crash
     runApp(
       MaterialApp(
         home: Scaffold(
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Maps Ride',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MainNavigation(), // Point d'entrée modifié vers la navigation
+      home: const MainNavigation(),
     );
   }
 }
