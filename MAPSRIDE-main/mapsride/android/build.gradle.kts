@@ -1,7 +1,3 @@
-plugins {
-    id("com.google.gms.google-services") version "4.4.2" apply false
-}
-
 allprojects {
     repositories {
         google()
@@ -15,7 +11,17 @@ rootProject.layout.buildDirectory.value(newBuildDir)
 subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
+
+    // Force toutes les dépendances à compiler en SDK 36 pour éviter les blocages
+    afterEvaluate {
+        if (project.plugins.hasPlugin("com.android.application") || project.plugins.hasPlugin("com.android.library")) {
+            project.extensions.configure<com.android.build.api.dsl.CommonExtension<*, *, *, *, *, *>>("android") {
+                compileSdk = 36
+            }
+        }
+    }
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }
