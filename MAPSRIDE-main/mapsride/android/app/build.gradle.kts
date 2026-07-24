@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -26,12 +25,10 @@ android {
         versionCode = 1
         versionName = "1.0.0"
     }
-}
 
-configurations.all {
-    resolutionStrategy.eachDependency {
-        if (requested.group == "androidx.core" && requested.name == "core-ktx") {
-            useVersion("1.13.1")
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 }
