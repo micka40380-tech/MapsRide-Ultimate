@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.micka40380.mapsride"
+        applicationId = "com.micka40380.mapsrideultimate"
         minSdk = 21
         targetSdk = 36
         versionCode = 1
