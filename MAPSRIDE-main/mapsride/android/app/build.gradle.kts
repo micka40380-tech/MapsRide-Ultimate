@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.micka40380.mapsride"
+    namespace = "com.mycompany.mapsride"
     compileSdk = 36
 
     compileOptions {
@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.micka40380.mapsrideultimate"
+        applicationId = "com.mycompany.mapsride"
         minSdk = 21
         targetSdk = 36
         versionCode = 1
